@@ -4,8 +4,8 @@ from car_park import CarPark
 
 class SensorTest(unittest.TestCase):
     def setUp(self):
-        self.entry_sensor = SensorEnter(999, True, CarPark())
-        self.exit_sensor = SensorExit(945, True, CarPark())
+        self.entry_sensor = SensorEnter(999, True, CarPark("log.txt"))
+        self.exit_sensor = SensorExit(945, True, CarPark("log.txt", plates=["TEST-952"]))
 
     def test_entry_sensor(self):
         self.assertIsInstance(self.entry_sensor, SensorEnter)
