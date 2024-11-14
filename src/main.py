@@ -46,7 +46,7 @@ def enter_car_park(car_park, sensor):
 def exit_car_park(car_park, sensor):
     """
     Send a specific number of vehicles trough Exit Sensor. The number is defined by the range(int)
-    Print updated capacity information after the vehicle leaves the car park.
+    Print an updated capacity information after the vehicle leaves the car park.
     :param car_park: the CarPark() object to access methods
     :param sensor: the SensorExit() object to access methods
     """
