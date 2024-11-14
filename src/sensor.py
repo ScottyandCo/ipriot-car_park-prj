@@ -1,4 +1,3 @@
-import random
 from abc import ABC, abstractmethod
 #from random import random, randint, choice
 from random import *
@@ -30,7 +29,7 @@ class Sensor(ABC):
 class SensorEnter(Sensor):
     def update_car_park(self, plate):
         self.car_park.add_car(plate)
-        print(f"A car is entering the car park.\nPlate #{plate}")
+        print(f"🚗 is entering the car park.\nPlate #{plate}\n")
 
 class SensorExit(Sensor):
     def _scan_plate(self):
@@ -38,4 +37,4 @@ class SensorExit(Sensor):
 
     def update_car_park(self, plate):
         self.car_park.remove_car(plate)
-        print(f"A car is leaving the car park.\nPlate #{plate}")
+        print(f"🚗 is leaving the car park.\nPlate #{plate}\n")
