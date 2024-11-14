@@ -20,7 +20,8 @@ class Sensor(ABC):
         pass
 
     def _scan_plate(self):
-        return f"PLATE-{format(randint(0, 999), "03d")}"
+        letters = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZZ"]
+        return f"1-{choice(letters)}-{format(randint(0, 999), "03d")}"
 
     def detect_vehicle(self):
         plate = self._scan_plate()
@@ -29,7 +30,9 @@ class Sensor(ABC):
 class SensorEnter(Sensor):
     def update_car_park(self, plate):
         self.car_park.add_car(plate)
-        print(f"🚗 is entering the car park.\nPlate #{plate}\n")
+        print(f"A 🚗 with the license plate '{plate}' is entering the car park.")
+# TODO: randomise vehicle type (choice(["🚗","🏍️")
+#       manage by using a dict and adding and removing as a k/v pair {plate: emoji}
 
 class SensorExit(Sensor):
     def _scan_plate(self):
@@ -37,4 +40,4 @@ class SensorExit(Sensor):
 
     def update_car_park(self, plate):
         self.car_park.remove_car(plate)
-        print(f"🚗 is leaving the car park.\nPlate #{plate}\n")
+        print(f"A 🚗 with the license plate '{plate}' is leaving the car park.")

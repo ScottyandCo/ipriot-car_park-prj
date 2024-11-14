@@ -6,7 +6,7 @@ import json
 
 
 class CarPark:
-    def __init__(self, location, capacity, plates = None, sensors = None, displays = None, log_file = Path("log.txt")):
+    def __init__(self, location, capacity, plates = None, sensors = None, displays = None, log_file = Path("log.txt"), config_file = Path("config.json")):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
@@ -14,7 +14,7 @@ class CarPark:
         self.displays = displays or []
         self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
         self.log_file.touch(exist_ok=True)
-        self.config_file = Path("config.json")
+        self.config_file = config_file if isinstance(config_file, Path) else Path(config_file)
 
     def __str__(self):
         return f"Location - {self.location},\nCapacity - {self.capacity}"
