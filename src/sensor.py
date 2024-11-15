@@ -4,7 +4,7 @@ from random import *
 
 
 class Sensor(ABC):
-    def __init__(self, sensor_id = None, is_active = True, car_park = None):
+    def __init__(self, sensor_id, car_park, is_active = True):
         self.sensor_id = sensor_id
         self.is_active = is_active
         self.car_park = car_park

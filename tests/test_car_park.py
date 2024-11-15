@@ -4,7 +4,7 @@ from car_park import CarPark
 
 class TestCarPark(unittest.TestCase):
     def setUp(self):
-        self.car_park = CarPark("123 Example Street", 100)
+        self.car_park = CarPark(100, "123 Example Street")
 
     def test_car_park_initialized_with_all_attributes(self):
         self.assertIsInstance(self.car_park, CarPark)
@@ -49,7 +49,7 @@ class TestCarPark(unittest.TestCase):
 
     def test_log_file_created(self):
         log_file = Path("new_log.txt")
-        self.new_carpark = CarPark("123 Example Street", 100, log_file=log_file)
+        self.new_carpark = CarPark(100, "123 Example Street", log_file=log_file)
         self.new_carpark.add_car("FAKE-001")
         self.assertTrue(log_file.exists())
 
@@ -57,7 +57,7 @@ class TestCarPark(unittest.TestCase):
         Path("new_log.txt").unlink(missing_ok=True)
 
     def test_car_logged_when_entering(self):
-        self.new_carpark = CarPark("123 Example Street", 100, log_file="new_log.txt")  # TODO: change this to use a class attribute or new instance variable
+        self.new_carpark = CarPark(100,"123 Example Street", log_file="new_log.txt")  # TODO: change this to use a class attribute or new instance variable
         self.new_carpark.add_car("NEW-001")
         with self.new_carpark.log_file.open() as f:
             last_line = f.readlines()[-1]
@@ -66,7 +66,7 @@ class TestCarPark(unittest.TestCase):
         self.assertIn("\n", last_line)  # check entry has a new line
 
     def test_car_logged_when_exiting(self):
-        self.new_carpark = CarPark("123 Example Street", 100, log_file="new_log.txt") # TODO: change this to use a class attribute or new instance variable
+        self.new_carpark = CarPark(100,"123 Example Street", log_file="new_log.txt") # TODO: change this to use a class attribute or new instance variable
         self.new_carpark.add_car("NEW-001")
         self.new_carpark.remove_car("NEW-001")
         with self.new_carpark.log_file.open() as f:

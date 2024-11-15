@@ -6,7 +6,7 @@ import json
 
 
 class CarPark:
-    def __init__(self, location, capacity, plates = None, sensors = None, displays = None, log_file = Path("log.txt"), config_file = Path("config.json")):
+    def __init__(self, capacity, location = "Here", plates = None, sensors = None, displays = None, log_file = Path("log.txt"), config_file = Path("config.json")):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
@@ -46,7 +46,7 @@ class CarPark:
             return available_bays
 
     def update_displays(self):
-        message = {"available_bays": self.available_bays, "temperature": 42}
+        message = {"available_bays": self.available_bays}
         for display in self.displays:
             display.update(message)
 
