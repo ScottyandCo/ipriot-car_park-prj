@@ -2,9 +2,11 @@ import unittest
 from display import Display
 from car_park import CarPark
 
+
 class TestDisplay(unittest.TestCase):
     def setUp(self):
-        self.display = Display(1, CarPark("123 Example Street", 100), "Welcome to the car park", is_on= True, )
+        self.display = Display(1, CarPark("123 Example Street", 100),
+                               "Welcome to the car park", is_on=True, )
 
     def test_display_initialized_with_all_attributes(self):
         self.assertIsInstance(self.display, Display)

@@ -2,6 +2,52 @@
 
 ##### This project will meet the requirements set out in the Assessment Document.
 
+### Project Description
+> This project is to create a "smart car park" that is able to:
+>  - track vehicles entering and exiting,
+>  - log vehicle license plates, and
+>  - display information to vehicles regarding car park status (available bays).
+>
+> 
+> The above is achieved by having 3 functional items
+>  - the car park,
+>    - this is where the information relevant to the car park is stored (configuration)
+>      - location,
+>      - number of bays,
+>      - list of license plates,
+>      - list of entry and exit sensors, and
+>      - list of displays. 
+>  - entry and exit sensors,
+>    - these sensors are used to scan license plates of vehicles entering and exiting the car park
+>    - they return information to the car park to add or remove a vehicle from the lists and return the
+>    number of available bays.
+>  - display(s).
+>    - the displays are used to display an initial welcome message, and
+>    - show the current number of available bays to entering vehicles.
+>
+
+### Basic Project Flow
+```mermaid
+flowchart TD
+    A(Start) --> B(Sensor detects vehicle) --> C{Vehicle is entering}
+    C -- True --- T1[Add license plate to list] --> G
+    C -- False --- F1[Remove license plate from list] --> G
+    G[Determine number of vehicles and \n number of available bays] --> H[Update display]
+    H --> E(End)
+```
+### Project Roadmap
+> Distinguish between vehicle types.
+> 
+> Add emojis to license plate list (change to dict) to identify different vehicles. 🚗 🏍️
+> 
+> Add bays for specific types of vehicles (motorbikes/cars).
+> 
+> Display to scroll through information over a specified time period
+>   - number of available car bays,
+>   - number of available motorbike bays,
+>   - current weather,
+>   - advertising/customer message.
+
 ### Overview
 
 >The City of Moondalup is progressively embracing smart city initiatives 
@@ -23,59 +69,31 @@ about weather and other community messages.
 
 ### Application requirements
 
->- [ ] The system must accurately track the status of each parking bay in real-time.
->- [ ] The display must be updated promptly as cars enter or exit.
->- [ ] The system should be robust, easy to maintain, and scalable for future enhancements.
->- [ ] The application must follow best coding practices and include unit testing.
+>- [x] The system must accurately track the status of each parking bay in real-time.
+>- [x] The display must be updated promptly as cars enter or exit.
+>- [x] The system should be robust, easy to maintain, and scalable for future enhancements.
+>- [x] The application must follow best coding practices and include unit testing.
 >- [x] You must use Git and Github for version management. 
 
 ### Coding requirements
 
->- [ ] Create at least three classes.
->- [ ] At least one class must include three or more parameters.
->- [ ] At least one class must aggregate another class.
->- [ ] You should demonstrate an example of polymorphism
->- [ ] Include at least two unit cases
->- [ ] Create a main.py demonstrating the core interaction between instances of your 
+>- [x] Create at least three classes.
+>- [x] At least one class must include three or more parameters.
+>- [x] At least one class must aggregate another class.
+>- [x] You should demonstrate an example of polymorphism
+>- [x] Include at least two unit cases
+>- [x] Create a main.py demonstrating the core interaction between instances of your 
 classes
->- [ ] Use PEP8 throughout your code and docstrings for major functions within your code
+>- [x] Use PEP8 throughout your code and docstrings for major functions within your code
 
 ### Version control requirements
 
 >- [x] Create a new repository and configure it with a README, .gitignore, and other 
 essential setup files.
 >- [x] Initialize your local repository and link it to a remote repository on GitHub.
->- [ ] Make initial commits with the basic structure of your car park system.
->- [ ] As you develop the system, commit your changes each time you reach a significant
+>- [x] Make initial commits with the basic structure of your car park system.
+>- [x] As you develop the system, commit your changes each time you reach a significant
 milestone or complete a task.
->- [ ] Make at least three commits to demonstrate the evolution of your project.
->- [ ] Manage any changes or improvements by committing to the repository with clear, 
+>- [x] Make at least three commits to demonstrate the evolution of your project.
+>- [x] Manage any changes or improvements by committing to the repository with clear, 
 descriptive commit messages.
-
-### Diagrams
-
-#### Process flow
-
-```mermaid
-flowchart TD
-    A([Begin]) -->B[Sensor senses vehicle and reads license plate]
-    B --> C{license plate\nin car park?}
-    C -->|True| D[Vehicle is exiting] --> E[[Remove from list]] --> G[/update display showing available bays/]
-    C -->|False| F[Vehicle is entering] --> H[[Add to list]] --> G
-    G --> Z([End])
-```
-
-#### Classes
-
-```mermaid
-classDiagram
-    CarPark : total_bays = int
-    CarPark : available_bays = int
-    CarPark : license_plates = list
-    CarPark : update_license_plates()
-    CarPark : update_available_bays()
-    Sensor : a
-    Sensor : read_license_plate()
-    Display : text_to_display = str
-    Display : display_available_bays()
-```

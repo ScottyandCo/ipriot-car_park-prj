@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
-#from random import random, randint, choice
 from random import *
 
 
 class Sensor(ABC):
-    def __init__(self, sensor_id, car_park, is_active = True):
+    def __init__(self, sensor_id, car_park, is_active=True):
         self.sensor_id = sensor_id
         self.is_active = is_active
         self.car_park = car_park
@@ -27,12 +26,14 @@ class Sensor(ABC):
         plate = self._scan_plate()
         self.update_car_park(plate)
 
+
 class SensorEnter(Sensor):
     def update_car_park(self, plate):
         self.car_park.add_car(plate)
         print(f"A 🚗 with the license plate '{plate}' is entering the car park.")
 # TODO: randomise vehicle type (choice(["🚗","🏍️")
 #       manage by using a dict and adding and removing as a k/v pair {plate: emoji}
+
 
 class SensorExit(Sensor):
     def _scan_plate(self):

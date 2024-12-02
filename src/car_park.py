@@ -6,7 +6,8 @@ import json
 
 
 class CarPark:
-    def __init__(self, capacity, location = "Here", plates = None, sensors = None, displays = None, log_file = Path("log.txt"), config_file = Path("config.json")):
+    def __init__(self, capacity, location="Here", plates=None, sensors=None, displays=None, log_file=Path("log.txt"),
+                 config_file=Path("config.json")):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
